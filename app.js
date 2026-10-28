@@ -1,5 +1,5 @@
 import {Experiment,definitions,defaults,energyInfo,DT} from './physics.js';
-import {translate, getLanguage, getLocale, initLanguage} from './i18n.js?v=20261028-en';
+import {translate, getLanguage, getLocale, initLanguage} from './i18n.js?v=20261029-credit';
 const $=id=>document.getElementById(id), ids=Object.keys(definitions);
 const fmt=(n,d=2)=>new Intl.NumberFormat(getLocale(),{minimumFractionDigits:d,maximumFractionDigits:d}).format(n);
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
