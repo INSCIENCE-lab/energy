@@ -1,3 +1,4 @@
+import {fromEnglish} from './romance.js?v=languages4';
 // Presentation-only localization. Physics state and saved notebook data stay unchanged.
 const pairs = [
 ['Створено астрофізикинею','Created by astrophysicist'],['Оленою Компанієць','Olena Kompaniiets'],['за допомогою GPT-6 Astra.','with the help of GPT-6 Astra.'],['Контакти:','Contact:'],['Контакти','Contact'],
@@ -28,8 +29,8 @@ const escapeRE=s=>s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
 const pattern=new RegExp('(?<![\\p{L}\\p{N}_])(?:'+[...dictionary.keys()].sort((a,b)=>b.length-a.length).map(escapeRE).join('|')+')(?![\\p{L}_])','gu');
 let language='uk';
 export const getLanguage=()=>language;
-export const getLocale=()=>language==='en'?'en-GB':'uk-UA';
-export function translate(value,lang=language){return lang==='en'?String(value).replace(pattern,key=>dictionary.get(key)):String(value)}
+export const getLocale=()=>({uk:'uk-UA',en:'en-GB',it:'it-IT',es:'es-ES'}[language]);
+export function translate(value,lang=language){const english=String(value).replace(pattern,key=>dictionary.get(key));return lang==='uk'?String(value):fromEnglish(english,lang)}
 const originals=new WeakMap(),attributes=new WeakMap();
 function localizeText(node){
  if(node.parentElement?.closest('textarea,script,style,[data-language]'))return;
@@ -56,10 +57,11 @@ export function localizeDOM(root=document.body){
 export function initLanguage(onChange){
  let saved;try{saved=localStorage.getItem('energy-lab-language')||localStorage.getItem('inscience-language')}catch{}
  const requested=new URLSearchParams(location.search).get('lang');
- const initial=['uk','en'].includes(requested)?requested:['uk','en'].includes(saved)?saved:'uk';
+ const initial=['uk','en','it','es'].includes(requested)?requested:['uk','en','it','es'].includes(saved)?saved:'uk';
  const originalTitle=document.title,description=document.querySelector('meta[name="description"]'),originalDescription=description?.content;
  const apply=lang=>{
   language=lang;document.documentElement.lang=lang;
+  document.querySelector('.language-switch').setAttribute('aria-label',({uk:'Мова',en:'Language',it:'Lingua',es:'Idioma'})[lang]);
   document.title=translate(originalTitle);if(description)description.content=translate(originalDescription);
   document.querySelectorAll('[data-language]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.language===lang)));
   const url=new URL(location.href);url.searchParams.set('lang',lang);history.replaceState(null,'',url);
