@@ -32,7 +32,7 @@ EXPERIMENT|ESPERIMENTO|EXPERIMENTO
 SCHEMATIC VIEW|RAPPRESENTAZIONE SCHEMATICA|REPRESENTACIÓN ESQUEMÁTICA
 Interactive pendulum model|Modello interattivo di un pendolo|Modelo interactivo de un péndulo
 animated model. Numerical values are shown below.|modello animato. I valori numerici sono riportati sotto.|modelo animado. Los valores numéricos se muestran debajo.
-Run experiment|Avvia esperimento|Iniciar experimento
+Run experiment|Avvia l’esperimento|Iniciar experimento
 Reset to the initial state|Ripristina lo stato iniziale|Restablecer el estado inicial
 Advance time by 0.05 seconds|Avanza di 0,05 secondi|Avanzar 0,05 segundos
 Step 0.05 s|Passo 0,05 s|Paso de 0,05 s
@@ -118,7 +118,7 @@ Copy|Copia|Copiar
 Link copied.|Link copiato.|Enlace copiado.
 Copy the selected link manually.|Copia manualmente il link selezionato.|Copia manualmente el enlace seleccionado.
 Enable JavaScript in your browser to run the interactive experiments.|Attiva JavaScript nel browser per avviare gli esperimenti interattivi.|Activa JavaScript en el navegador para ejecutar los experimentos interactivos.
-Settings ready. Make a prediction and click “Run experiment”.|Impostazioni pronte. Fai una previsione e premi «Avvia esperimento».|Configuración lista. Formula una predicción y pulsa «Iniciar experimento».
+Settings ready. Make a prediction and click “Run experiment”.|Impostazioni pronte. Fai una previsione e premi «Avvia l’esperimento».|Configuración lista. Formula una predicción y pulsa «Iniciar experimento».
 Pendulum|Pendolo|Péndulo
 Cart on a track|Carrello sulla pista|Carrito en una pista
 Spring|Molla|Muelle
@@ -202,7 +202,7 @@ Chemical → electrical → light + heat|Chimica → elettrica → luce + calore
 kinetic|cinetica|cinética
 internal|interna|interna
 MINI EXPERIMENT|MINI ESPERIMENTO|MINIEXPERIMENTO
-Set up experiment|Prepara esperimento|Preparar experimento
+Set up experiment|Prepara l’esperimento|Preparar experimento
 Explanation|Spiegazione|Explicación
 A bob twice as heavy|Una massa doppia|Una masa doble
 How does mass affect the energy reserve and the pendulum’s speed?|Come influisce la massa sull’energia e sulla velocità del pendolo?|¿Cómo afecta la masa a la energía y a la velocidad del péndulo?
@@ -212,7 +212,7 @@ Add drag and follow the orange part of the balance.|Aggiungi resistenza e osserv
 Motion dies away and internal energy increases. The sum of all three components stays constant.|Il moto si smorza e l’energia interna aumenta. La somma delle tre componenti resta costante.|El movimiento se amortigua y la energía interna aumenta. La suma de las tres componentes permanece constante.
 Release from a greater height|Rilascia da un’altezza maggiore|Suelta desde una altura mayor
 How does the initial angle affect speed at the bottom?|Come influisce l’angolo iniziale sulla velocità nel punto più basso?|¿Cómo afecta el ángulo inicial a la velocidad en el punto más bajo?
-A larger angle means a greater initial height: v at the bottom = √(2gL(1 − cos θ₀)).|Un angolo maggiore significa un’altezza iniziale maggiore: v nel punto più basso = √(2gL(1 − cos θ₀)).|Un ángulo mayor significa una altura inicial mayor: v en el punto más bajo = √(2gL(1 − cos θ₀)).
+Without drag, a larger angle means a greater initial height: v at the bottom = √(2gL(1 − cos θ₀)).|Senza resistenza, un angolo maggiore significa un’altezza iniziale maggiore: v nel punto più basso = √(2gL(1 − cos θ₀)).|Sin resistencia, un ángulo mayor significa una altura inicial mayor: v en el punto más bajo = √(2gL(1 − cos θ₀)).
 Start higher|Parti più in alto|Empieza más arriba
 Does doubling the height double the speed?|Raddoppiare l’altezza raddoppia la velocità?|¿Duplicar la altura duplica la velocidad?
 Compare heights of 2 and 4 m without drag. From v = √(2gh), speed increases by a factor of √2.|Confronta altezze di 2 e 4 m senza resistenza. Da v = √(2gh), la velocità aumenta di un fattore √2.|Compara alturas de 2 y 4 m sin resistencia. Según v = √(2gh), la velocidad aumenta por un factor √2.
@@ -227,7 +227,7 @@ Compare extensions of 0.4 and 0.8 m. How does the stored energy change?|Confront
 Elastic energy depends on the square of extension: it increases by a factor of 4.|L’energia elastica dipende dal quadrato dell’allungamento: aumenta di un fattore 4.|La energía elástica depende del cuadrado del estiramiento: aumenta por un factor 4.
 A stiffer spring|Una molla più rigida|Un muelle más rígido
 How does stiffness change the motion and maximum speed?|Come influisce la rigidezza sul moto e sulla velocità massima?|¿Cómo afecta la rigidez al movimiento y a la velocidad máxima?
-For the same extension, E₀ = kA²/2 and vmax = A√(k/m). A stiffer spring oscillates faster.|A parità di allungamento, E₀ = kA²/2 e vmax = A√(k/m). Una molla più rigida oscilla più rapidamente.|Para el mismo estiramiento, E₀ = kA²/2 y vmax = A√(k/m). Un muelle más rígido oscila más rápido.
+Without drag, for the same extension, E₀ = kA²/2 and vmax = A√(k/m). A stiffer spring oscillates faster.|Senza resistenza, a parità di allungamento, E₀ = kA²/2 e vmax = A√(k/m). Una molla più rigida oscilla più rapidamente.|Sin resistencia, para el mismo estiramiento, E₀ = kA²/2 y vmax = A√(k/m). Un muelle más rígido oscila más rápido.
 Oscillations fade away|Le oscillazioni si smorzano|Las oscilaciones se amortiguan
 Enable drag and observe the sum of the energies.|Attiva la resistenza e osserva la somma delle energie.|Activa la resistencia y observa la suma de las energías.
 Amplitude decreases and internal energy increases. Mechanical energy plus ΔU equals the initial energy reserve.|L’ampiezza diminuisce e l’energia interna aumenta. L’energia meccanica più ΔU è uguale alla riserva iniziale.|La amplitud disminuye y la energía interna aumenta. La energía mecánica más ΔU equivale a la reserva inicial.
