@@ -33,14 +33,14 @@ export const getLocale=()=>({uk:'uk-UA',en:'en-GB',it:'it-IT',es:'es-ES'}[langua
 export function translate(value,lang=language){const english=String(value).replace(pattern,key=>dictionary.get(key));return lang==='uk'?String(value):fromEnglish(english,lang)}
 const originals=new WeakMap(),attributes=new WeakMap();
 function localizeText(node){
- if(node.parentElement?.closest('textarea,script,style,[data-language]'))return;
+ if(node.parentElement?.closest('[data-brand-managed],[data-inscience-home],textarea,script,style,[data-language]'))return;
  const value=node.nodeValue,prior=originals.get(node);
  const source=prior&&value===prior.output?prior.source:value;
  const output=translate(source);originals.set(node,{source,output});
  if(value!==output)node.nodeValue=output;
 }
 function localizeElement(el){
- if(el.closest('script,style'))return;
+ if(el.closest('[data-brand-managed],[data-inscience-home],script,style'))return;
  let record=attributes.get(el);if(!record){record={};attributes.set(el,record)}
  for(const key of ['aria-label','title','placeholder','aria-valuetext']){
   if(!el.hasAttribute(key))continue;const value=el.getAttribute(key),prior=record[key];
