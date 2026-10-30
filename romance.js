@@ -43,7 +43,7 @@ Experiment running|Esperimento in corso|Experimento en marcha
 Experiment complete|Esperimento concluso|Experimento finalizado
 Paused|In pausa|En pausa
 Ready to run|Pronto per iniziare|Listo para iniciar
-Speed|Velocità|Velocidad
+Playback speed|Velocità di riproduzione|Velocidad de reproducción
 Save a measurement to the notebook|Salva una misura nel quaderno|Guardar una medición en el cuaderno
 Record|Registra|Registrar
 EVERY JOULE ACCOUNTED FOR|OGNI JOULE AL SUO POSTO|CADA JULIO CUENTA
@@ -70,7 +70,7 @@ Then test it with an experiment.|Poi verificala con un esperimento.|Después com
 Motion stopping is an energy transformation too.|Anche l’arresto del movimento è una trasformazione di energia.|La detención del movimiento también es una transformación de energía.
 When drag slows an object, its mechanical energy becomes internal energy of the objects and their surroundings. Expand the system boundary to recover the full balance.|Quando la resistenza rallenta un corpo, la sua energia meccanica diventa energia interna dei corpi e dell’ambiente. Allarga i confini del sistema per ritrovare il bilancio completo.|Cuando la resistencia frena un objeto, su energía mecánica se convierte en energía interna de los cuerpos y del entorno. Amplía los límites del sistema para obtener el balance completo.
 Explore the theory|Esplora la teoria|Explorar la teoría
-Less memorizing. More understanding.|Meno memoria. Più comprensione.|Menos memorizar. Más comprender.
+Less memorising. More understanding.|Meno nozioni da imparare a memoria. Più comprensione.|Menos memorizar. Más comprender.
 Models and assumptions|Modelli e ipotesi|Modelos y supuestos
 THE PHYSICS BEHIND IT|LA FISICA DIETRO LE QUINTE|LA FÍSICA ENTRE BASTIDORES
 Close|Chiudi|Cerrar
@@ -84,10 +84,10 @@ Build the complete energy balance|Costruisci il bilancio energetico completo|Con
 Energy associated with the interaction between an object and Earth. Height is measured from the lowest point of the trajectory.|Energia associata all’interazione tra un corpo e la Terra. L’altezza si misura dal punto più basso della traiettoria.|Energía asociada a la interacción entre un objeto y la Tierra. La altura se mide desde el punto más bajo de la trayectoria.
 Energy of motion. Doubling speed quadruples kinetic energy.|Energia del movimento. Raddoppiando la velocità, l’energia cinetica quadruplica.|Energía del movimiento. Duplicar la velocidad cuadruplica la energía cinética.
 Energy stored in a deformed spring; x is displacement from equilibrium.|Energia immagazzinata in una molla deformata; x è lo spostamento dall’equilibrio.|Energía almacenada en un muelle deformado; x es el desplazamiento respecto al equilibrio.
-With drag, mechanical energy decreases while internal energy increases. Heat Q is energy transferred by thermal processes.|Con la resistenza, l’energia meccanica diminuisce e quella interna aumenta. Il calore Q è energia trasferita mediante processi termici.|Con resistencia, la energía mecánica disminuye y la interna aumenta. El calor Q es energía transferida mediante procesos térmicos.
+With drag, mechanical energy decreases while internal energy increases. Heat Q is energy transferred because of a temperature difference.|Con la resistenza, l’energia meccanica diminuisce e quella interna aumenta. Il calore Q è energia trasferita a causa di una differenza di temperatura.|Con resistencia, la energía mecánica disminuye y la interna aumenta. El calor Q es energía transferida mediante procesos térmicos.
 Why does a lamp have no “missing” energy?|Perché in una lampada non c’è energia «scomparsa»?|¿Por qué una lámpara no tiene energía «perdida»?
 Some battery energy becomes visible light, and some is transferred to the surroundings as heat. Only the light is useful for illumination, but the complete balance includes both.|Parte dell’energia della batteria diventa luce visibile e parte viene trasferita all’ambiente come calore. Solo la luce è utile per illuminare, ma il bilancio completo comprende entrambe.|Parte de la energía de la batería se convierte en luz visible y otra parte se transfiere al entorno como calor. Solo la luz es útil para iluminar, pero el balance completo incluye ambas.
-In the mechanical experiments, g = 9.81 m/s². Drag is proportional to velocity; γ is a damping rate, not a coefficient of dry friction.|Negli esperimenti meccanici, g = 9,81 m/s². La resistenza è proporzionale alla velocità; γ è un tasso di smorzamento, non un coefficiente di attrito secco.|En los experimentos mecánicos, g = 9,81 m/s². La resistencia es proporcional a la velocidad; γ es una tasa de amortiguamiento, no un coeficiente de rozamiento seco.
+In the mechanical experiments, g = 9.81 m/s². Drag is proportional to velocity; γ is the drag coefficient divided by mass, not a coefficient of dry friction.|Negli esperimenti meccanici, g = 9,81 m/s². La resistenza è proporzionale alla velocità; γ è il coefficiente della forza resistente diviso per la massa, non un coefficiente di attrito secco.|En los experimentos mecánicos, g = 9,81 m/s². La resistencia es proporcional a la velocidad; γ es el coeficiente de resistencia dividido por la masa, no un coeficiente de rozamiento seco.
 Pendulum: a point mass on a massless, inextensible string. The model uses sin θ without the small-angle approximation.|Pendolo: massa puntiforme su un filo inestensibile e privo di massa. Il modello usa sin θ senza l’approssimazione dei piccoli angoli.|Péndulo: masa puntual suspendida de un hilo inextensible y sin masa. El modelo usa sin θ sin la aproximación de ángulos pequeños.
 Track: a parabolic track h = x² / (2R), with R = 2.5 m. The cart is treated as a point mass; wheel rotation is excluded.|Pista: profilo parabolico h = x² / (2R), con R = 2,5 m. Il carrello è una massa puntiforme; la rotazione delle ruote non è inclusa.|Pista: perfil parabólico h = x² / (2R), con R = 2,5 m. El carrito se trata como una masa puntual; no se incluye la rotación de las ruedas.
 Spring: Hooke’s law, horizontal motion and a massless spring.|Molla: legge di Hooke, moto orizzontale e molla priva di massa.|Muelle: ley de Hooke, movimiento horizontal y muelle sin masa.
@@ -262,7 +262,8 @@ yes|sì|sí
 no|no|no
 before|prima|antes
 after|dopo|después
-energy|energia|energía`;
+energy|energia|energía
+In this model, η is the fraction of battery energy converted to visible light. Mechanical drag follows F = −mγv, so γ has units of s⁻¹. For collisions, e is the relative separation speed after impact divided by the relative approach speed before impact.|In questo modello, η è la frazione dell’energia della batteria convertita in luce visibile. La forza resistente è F = −mγv, quindi γ si misura in s⁻¹. Negli urti, e è il rapporto tra la velocità relativa di allontanamento dopo l’urto e quella di avvicinamento prima dell’urto.|En este modelo, η es la fracción de energía de la batería convertida en luz visible. La resistencia mecánica sigue F = −mγv, por lo que γ se mide en s⁻¹. En las colisiones, e es el cociente entre la rapidez relativa de separación después del impacto y la de aproximación antes del impacto.`;
 export const romanceRows=rows.split('\n').map(row=>row.split('|'));
 const maps=Object.fromEntries(['it','es'].map((lang,i)=>[lang,new Map(romanceRows.map(r=>[r[0],r[i+1]]))]));
 for(const map of Object.values(maps))for(const [key,value] of [...map])if(key.length>3)map.set(key.toUpperCase(),value.toUpperCase());
