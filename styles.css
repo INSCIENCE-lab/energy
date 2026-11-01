@@ -28,3 +28,12 @@ footer{flex-wrap:wrap}.creator-credit{flex:0 0 100%;width:100%;border-top:1px so
 .energy-scene-viewport{width:100%;max-height:75svh;overflow:auto;touch-action:pan-x pan-y}
 .energy-scene-viewport #scene{display:block;max-width:none}
 @media(max-width:760px){.parameter label{flex-wrap:wrap;gap:6px}.parameter input[type=range]{min-height:36px}.transport button,.experiment-tab,.language-switch button{min-height:44px}.scene-caption{max-width:80%;overflow-wrap:anywhere}.scene-scale{max-width:45%;white-space:normal;text-align:right}.status-badge{max-width:100%;white-space:normal}}
+/* Shared mobile reading order: scene, settings, results, explanation. */
+@media(max-width:760px){
+ .workspace{display:flex;flex-direction:column;gap:18px}
+ .workspace>.main-column,.workspace>.sidebar{display:contents}
+ .workspace .scene-card{order:0;width:100%}
+ .workspace .settings-card{order:1;width:100%}
+ .workspace .energy-card{order:2;width:100%}
+ .workspace .insight-card{order:3;width:100%}
+}
