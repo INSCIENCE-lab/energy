@@ -20,3 +20,11 @@ footer{flex-wrap:wrap}.creator-credit{flex:0 0 100%;width:100%;border-top:1px so
 .hero h1 span{color:#8303DC}.parameter input[type=range]{accent-color:#8303DC}.experiment-tab[aria-selected="true"]{border-color:#8303DC;background:#f1e6fb}
 
 .boot-status{padding:16px;border:1px solid var(--line);border-radius:12px;margin:16px 0;line-height:1.7}.boot-status button{display:inline-block;margin:8px 0;padding:10px 16px;background:var(--brand-accent);color:#fff;border-radius:8px}.scene-header{gap:12px;flex-wrap:wrap}.scene-header>*{min-width:0}@media(max-width:1050px){.site-header{height:auto;min-height:94px;flex-wrap:wrap;padding:16px 0;gap:12px}.site-header nav{height:auto;flex-wrap:wrap;gap:12px}.site-header nav a,.site-header nav button{height:auto;min-height:36px}.header-tools{flex-wrap:wrap;gap:8px}}@media(max-width:480px){.transport{flex-wrap:wrap;gap:10px}.transport-right{display:flex;flex-wrap:wrap;gap:8px}.scene-header{align-items:flex-start}.experiment-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}.experiment-tab{min-width:0}.energy-total{flex-wrap:wrap;gap:12px}.header-tools{max-width:100%}}
+/* Touch-size controls and optional diagram enlargement next to the scene. */
+.mobile-scene-tools{display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid var(--line)}
+.mobile-scene-tools label{display:flex;flex:1 1 220px;align-items:center;gap:10px;flex-wrap:wrap;font-size:12px}
+.mobile-scene-tools input{flex:1 1 100px;width:auto;min-width:80px;accent-color:#8303DC;min-height:36px}
+.mobile-scene-tools button{min-height:44px;padding:8px 12px;color:var(--ink);background:white;border:1px solid var(--line);border-radius:8px}
+.energy-scene-viewport{width:100%;max-height:75svh;overflow:auto;touch-action:pan-x pan-y}
+.energy-scene-viewport #scene{display:block;max-width:none}
+@media(max-width:760px){.parameter label{flex-wrap:wrap;gap:6px}.parameter input[type=range]{min-height:36px}.transport button,.experiment-tab,.language-switch button{min-height:44px}.scene-caption{max-width:80%;overflow-wrap:anywhere}.scene-scale{max-width:45%;white-space:normal;text-align:right}.status-badge{max-width:100%;white-space:normal}}
