@@ -37,3 +37,8 @@ footer{flex-wrap:wrap}.creator-credit{flex:0 0 100%;width:100%;border-top:1px so
  .workspace .energy-card{order:2;width:100%}
  .workspace .insight-card{order:3;width:100%}
 }
+@media(max-width:760px){
+ .settings-card select,.settings-card input:not([type=range]):not([type=checkbox]),dialog input,dialog select,dialog textarea{font-size:16px;max-width:100%}
+ dialog{max-width:calc(100vw - 20px)}
+}
+@media(max-width:760px){#energyGraph{overflow-x:auto;max-width:100%;min-width:0}#energyGraph #chart{min-width:560px}}
