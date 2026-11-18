@@ -42,3 +42,13 @@ footer{flex-wrap:wrap}.creator-credit{flex:0 0 100%;width:100%;border-top:1px so
  dialog{max-width:calc(100vw - 20px)}
 }
 @media(max-width:760px){#energyGraph{overflow-x:auto;max-width:100%;min-width:0}#energyGraph #chart{min-width:560px}}
+.energy-theory{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:clamp(18px,4vw,42px)}
+.energy-theory h2,.energy-catalog h2{margin-top:0}
+.energy-theory p,.energy-theory li{line-height:1.65}
+.energy-topic{max-width:78ch;border-top:1px solid var(--line);margin-top:1.5rem;padding-top:.4rem}
+.energy-catalog{margin-top:2rem}
+.experiment-tab{color:var(--ink);text-decoration:none}
+.experiment-tab[aria-current="page"]{background:var(--green);color:#fff;border-color:var(--green)}
+.takeaway>a,footer>a[data-home-section]{color:inherit;text-decoration:underline;text-underline-offset:.2em}
+#energyHome[hidden],#laboratory[hidden]{display:none}
+.energy-start{display:inline-flex;margin-top:.5rem;padding:.65rem 1rem;background:var(--green);color:#fff;border-radius:.65rem;text-decoration:none}

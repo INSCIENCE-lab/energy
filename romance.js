@@ -263,7 +263,10 @@ no|no|no
 before|prima|antes
 after|dopo|después
 energy|energia|energía
-In this model, η is the fraction of battery energy converted to visible light. Mechanical drag follows F = −mγv, so γ has units of s⁻¹. For collisions, e is the relative separation speed after impact divided by the relative approach speed before impact.|In questo modello, η è la frazione dell’energia della batteria convertita in luce visibile. La forza resistente è F = −mγv, quindi γ si misura in s⁻¹. Negli urti, e è il rapporto tra la velocità relativa di allontanamento dopo l’urto e quella di avvicinamento prima dell’urto.|En este modelo, η es la fracción de energía de la batería convertida en luz visible. La resistencia mecánica sigue F = −mγv, por lo que γ se mide en s⁻¹. En las colisiones, e es el cociente entre la rapidez relativa de separación después del impacto y la de aproximación antes del impacto.`;
+In this model, η is the fraction of battery energy converted to visible light. Mechanical drag follows F = −mγv, so γ has units of s⁻¹. For collisions, e is the relative separation speed after impact divided by the relative approach speed before impact.|In questo modello, η è la frazione dell’energia della batteria convertita in luce visibile. La forza resistente è F = −mγv, quindi γ si misura in s⁻¹. Negli urti, e è il rapporto tra la velocità relativa di allontanamento dopo l’urto e quella di avvicinamento prima dell’urto.|En este modelo, η es la fracción de energía de la batería convertida en luz visible. La resistencia mecánica sigue F = −mγv, por lo que γ se mide en s⁻¹. En las colisiones, e es el cociente entre la rapidez relativa de separación después del impacto y la de aproximación antes del impacto.
+Theory|Teoria|Teoría
+Choose an experiment|Scegli un esperimento|Elige un experimento
+Skip to content|Vai al contenuto|Saltar al contenido`;
 export const romanceRows=rows.split('\n').map(row=>row.split('|'));
 const maps=Object.fromEntries(['it','es'].map((lang,i)=>[lang,new Map(romanceRows.map(r=>[r[0],r[i+1]]))]));
 for(const map of Object.values(maps))for(const [key,value] of [...map])if(key.length>3)map.set(key.toUpperCase(),value.toUpperCase());

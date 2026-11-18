@@ -1,5 +1,6 @@
-import {Experiment,definitions,defaults,energyInfo,DT} from './physics.js?v=uk-copy1';
-import {translate, getLanguage, getLocale, initLanguage} from './i18n.js?v=uk-copy1';
+import {energyTopics} from './energy-topics.js';
+import {Experiment,definitions,defaults,energyInfo,DT} from './physics.js?v=theory-home1';
+import {translate, getLanguage, getLocale, initLanguage} from './i18n.js?v=theory-home1';
 const $=id=>document.getElementById(id), ids=Object.keys(definitions);
 const parameterDigits=step=>step<0.1?2:step<1?1:0;
 const fmt=(n,d=2)=>new Intl.NumberFormat(getLocale(),{minimumFractionDigits:d,maximumFractionDigits:d}).format(n);
@@ -23,10 +24,26 @@ const tasks={
  collision:[['Обмін швидкостями','Зіштовхни однакові візки пружно.',{mass:1,mass2:1,velocity:3,velocity2:0},false,'Для однакових мас у пружному одновимірному зіткненні візки обмінюються швидкостями.'],['Візки зчепилися','Обери e = 0. Що збережеться після удару?',{restitution:0},true,'Після удару обидва візки рухаються з однаковою швидкістю. Імпульс і повна енергія зберігаються; кінетична енергія зменшується.'],['Важчий другий візок','Порівняй швидкості та енергії після зіткнення.',{mass:1,mass2:3,velocity:3,velocity2:0,restitution:0.5},true,'Легкий візок може відскочити назад. Напрямок швидкості важливий для імпульсу, а кінетична енергія завжди невід’ємна.'] ],
  lamp:[['Світло чи нагрівання?','Порівняй η = 5% та η = 35% за однакової потужності.',{efficiency:5},false,'Обидві лампи витрачають однакову енергію за той самий час. За η = 35% більше енергії переходить у видиме світло.'],['Подвій потужність','Як зміниться час роботи батареї?',{power:80},false,'За E₀ = 1000 Дж збільшення потужності з 40 до 80 Вт скорочує час роботи з 25 до 12,5 с.'],['Більший запас','Чи вплине ємність батареї на потужність світла?',{capacity:2000},false,'За сталої потужності більший запас подовжує роботу. Світлова потужність ηP залишається такою самою.'] ]
 };
-function tabs(){ $('experimentTabs').innerHTML=ids.map((id,i)=>`<button id="tab-${id}" class="experiment-tab" role="tab" aria-selected="${id===current}" aria-controls="experimentPanel" tabindex="${id===current?0:-1}" data-experiment="${id}">${icon(id)}<span><small>ДОСЛІД 0${i+1}</small>${definitions[id].name}</span></button>`).join('');}
+function energyURL(id='',section=''){
+ const url=new URL(location.pathname,location.origin);
+ url.searchParams.set('lang',getLanguage());
+ if(id)url.searchParams.set('experiment',id);
+ url.hash=section;
+ return url;
+}
+function tabs(){
+ function link(id,active){
+  return `<a class="experiment-tab" href="${esc(energyURL(id).href)}"${active?' aria-current="page"':''}>${icon(id)}<span>${definitions[id].name}</span></a>`;
+ }
+ $('experimentLinks').innerHTML=ids.map(id=>link(id,false)).join('');
+ $('experimentTabs').innerHTML=ids.map(id=>link(id,id===current)).join('');
+ document.querySelectorAll('[data-home-section]').forEach(a=>{a.href=energyURL('',a.dataset.homeSection);});
+ document.querySelector('.site-header .brand').href=energyURL();
+ $('moreTheoryButton').href=energyURL('',{pendulum:'energy-transformations',track:'energy-friction',spring:'energy-damping',collision:'energy-collisions',lamp:'energy-power'}[current]);
+}
 function selectExperiment(id,p={},l=false){current=id;params={...defaults(id),...p};losses=l;tabs();renderControls();renderTasks();reset();}
 function renderControls(){
- const def=definitions[current];$('experimentPanel').setAttribute('aria-labelledby','tab-'+current);$('experimentTitle').textContent=def.name;$('experimentNumber').textContent=`ДОСЛІД 0${ids.indexOf(current)+1} · ${def.subtitle.toUpperCase()}`;$('currentFormula').textContent=def.formula;$('systemBoundary').textContent=def.system;
+ const def=definitions[current];$('experimentTitle').textContent=def.name;$('experimentNumber').textContent=`ДОСЛІД 0${ids.indexOf(current)+1} · ${def.subtitle.toUpperCase()}`;$('currentFormula').textContent=def.formula;$('systemBoundary').textContent=def.system;
  $('scene').setAttribute('aria-label',`${def.name}: анімована модель. Числові значення наведено під нею.`);
  $('modeControls').innerHTML=current==='lamp'?'<div class="mode-toggle"><button data-lamp="35">Світлодіодна</button><button data-lamp="5">Розжарювання</button></div><p class="mode-description">Навчальні приклади η = 35% та 5%.</p>':`<div class="mode-toggle"><button data-losses="0" class="${!losses?'active':''}" aria-pressed="${!losses}">${current==='collision'?'Пружне зіткнення':'Без опору'}</button><button data-losses="1" class="${losses?'active':''}" aria-pressed="${losses}">${current==='collision'?'Непружне зіткнення':'З опором'}</button></div><p class="mode-description">${current==='collision'?(!losses?'e = 1: кінетична енергія зберігається.':'Змінюй e, щоб дослідити перетворення енергії.'):(!losses?'Ідеальна модель: механічна енергія стала.':'Опір перетворює механічну енергію у внутрішню.')}</p>`;
  $('parameterControls').innerHTML=def.params.map(([key,label,unit,min,max,step])=>{const disabled=['damping','restitution'].includes(key)&&!losses;return `<div class="parameter ${disabled?'disabled':''}"><div class="parameter-label"><label for="param-${key}">${label}</label><output id="value-${key}" class="parameter-value" for="param-${key}"></output></div><input type="range" id="param-${key}" data-param="${key}" min="${min}" max="${max}" step="${step}" value="${params[key]}" ${disabled?'disabled':''}><div class="range-extents"><span>${fmt(min,parameterDigits(step))} ${unit}</span><span>${fmt(max,parameterDigits(step))} ${unit}</span></div></div>`}).join('');
@@ -83,26 +100,27 @@ function renderJournal(){$('exportButton').disabled=!journal.length;$('clearJour
 function exportCSV(){const safe=v=>{let s=String(v??'');if(/^[=+\-@\t\r]/.test(s))s="'"+s;return '"'+s.replace(/"/g,'""')+'"';};const header=['Дата','Дослід','Опір або непружність','Параметри (СІ)','Час, с',...Object.keys(energyInfo).map(k=>energyInfo[k][0]+', Дж'),'Повний баланс, Дж','Початкова енергія, Дж','Відносна похибка','Висновок'];const rows=journal.map(r=>[r.date,translate(definitions[r.experiment].name),translate(r.losses?'так':'ні'),JSON.stringify(r.params),r.snapshot.t,...Object.keys(energyInfo).map(k=>r.snapshot.e[k]??''),r.snapshot.total,r.snapshot.initial,r.snapshot.error,r.note]);const data='\uFEFF'+[header.map(x=>translate(x)),...rows].map(row=>row.map(safe).join(getLanguage()==='en'?',':';')).join('\r\n');const url=URL.createObjectURL(new Blob([data],{type:'text/csv;charset=utf-8;'}));const a=document.createElement('a');a.href=url;a.download=({uk:'zhurnal-enerhii.csv',en:'energy-journal.csv',it:'quaderno-energia.csv',es:'cuaderno-energia.csv'})[getLanguage()];a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);notify('Журнал експортовано у CSV.');}
 function openDialog(id){running=false;syncPlay();$(id).showModal();}
 function share(){const u=new URL(location.href);u.search='';u.hash='';u.searchParams.set('lang',getLanguage());u.searchParams.set('experiment',current);u.searchParams.set('losses',losses?'1':'0');for(const [k,v] of Object.entries(params))u.searchParams.set(k,v);$('shareUrl').value=u.toString();openDialog('shareDialog');}
-$('experimentTabs').addEventListener('click',e=>{const b=e.target.closest('[data-experiment]');if(b)selectExperiment(b.dataset.experiment);});
-$('experimentTabs').addEventListener('keydown',e=>{const i=ids.indexOf(current);let target;if(e.key==='ArrowRight')target=ids[(i+1)%ids.length];if(e.key==='ArrowLeft')target=ids[(i-1+ids.length)%ids.length];if(e.key==='Home')target=ids[0];if(e.key==='End')target=ids.at(-1);if(target){e.preventDefault();selectExperiment(target);$('tab-'+target).focus();}});
 $('parameterControls').addEventListener('input',e=>{if(e.target.dataset.param){params[e.target.dataset.param]=Number(e.target.value);updateValues();reset();}});
 $('modeControls').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.losses!==undefined)losses=b.dataset.losses==='1';if(b.dataset.lamp)params.efficiency=Number(b.dataset.lamp);renderControls();reset();});
 $('challengeCards').addEventListener('click',e=>{const b=e.target.closest('[data-task]');if(!b)return;const t=tasks[current][Number(b.dataset.task)];params={...defaults(current),...t[2]};losses=t[3];renderControls();reset();$('laboratory').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});notify('Налаштування готові. Зроби припущення й натисни «Почати дослід».');});
 $('playButton').addEventListener('click',togglePlay);$('resetButton').addEventListener('click',reset);$('stepButton').addEventListener('click',()=>{for(let i=0;i<12&&!model.done;i++)advance();render();syncPlay();});$('captureButton').addEventListener('click',record);
 $('barsTab').addEventListener('click',()=>setView('bars'));$('graphTab').addEventListener('click',()=>setView('graph'));
 function setView(v){view=v;$('energyBars').hidden=v!=='bars';$('energyGraph').hidden=v!=='graph';for(const [id,type] of [['barsTab','bars'],['graphTab','graph']]){$(id).classList.toggle('selected',v===type);$(id).setAttribute('aria-pressed',String(v===type));}render();}
-for(const id of ['theoryButton','moreTheoryButton'])$(id).addEventListener('click',()=>openDialog('theoryDialog'));
-$('modelButton').addEventListener('click',()=>{openDialog('theoryDialog');$('modelHeading').scrollIntoView();});$('journalButton').addEventListener('click',showJournal);$('exportButton').addEventListener('click',exportCSV);
+$('journalButton').addEventListener('click',showJournal);$('exportButton').addEventListener('click',exportCSV);
 $('clearJournal').addEventListener('click',()=>{if(confirm(translate('Видалити всі записи журналу в цьому браузері?'))){journal=[];persist();renderJournal();}});
 $('journalEntries').addEventListener('click',e=>{const b=e.target.closest('[data-delete]');if(b){journal=journal.filter(r=>r.id!==b.dataset.delete);persist();renderJournal();}});
 $('journalEntries').addEventListener('input',e=>{const r=journal.find(r=>r.id===e.target.dataset.note);if(r){r.note=e.target.value;persist();}});
 $('shareButton').addEventListener('click',share);$('copyShare').addEventListener('click',async()=>{try{await navigator.clipboard.writeText($('shareUrl').value);$('shareDialog').close();notify('Посилання скопійовано.');}catch{$('shareUrl').select();notify('Скопіюй виділене посилання вручну.');}});
 document.querySelectorAll('.dialog-close,.close-bottom').forEach(b=>b.addEventListener('click',()=>b.closest('dialog').close()));
 document.querySelectorAll('dialog').forEach(d=>d.addEventListener('click',e=>{if(e.target===d){const r=d.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)d.close();}}));
-document.addEventListener('keydown',e=>{if(document.querySelector('dialog[open]')||e.target.closest('input,textarea,select,button,summary,a'))return;if(e.code==='Space'){e.preventDefault();togglePlay();}if(e.key.toLowerCase()==='r')reset();});
+document.addEventListener('keydown',e=>{if($('laboratory').hidden||document.querySelector('dialog[open]')||e.target.closest('input,textarea,select,button,summary,a'))return;if(e.code==='Space'){e.preventDefault();togglePlay();}if(e.key.toLowerCase()==='r')reset();});
 document.addEventListener('visibilitychange',()=>{if(document.hidden&&running){running=false;syncPlay();}});
 let previous=0,lastRender=0;function frame(now){const elapsed=previous?Math.min((now-previous)/1000,.08):0;previous=now;if(running){accumulator+=elapsed*Number($('speed').value);while(accumulator>=DT&&running){advance();accumulator-=DT;}if(now-lastRender>30||!running){render();lastRender=now;}}requestAnimationFrame(frame);}
-const urlParams=new URLSearchParams(location.search),requested=urlParams.get('experiment');if(definitions[requested]){current=requested;params=defaults(current);for(const [key,,,min,max,step] of definitions[current].params){if(urlParams.has(key)){const v=Number(urlParams.get(key));if(Number.isFinite(v))params[key]=Number(Math.min(max,Math.max(min,min+Math.round((v-min)/step)*step)).toFixed(6));}}losses=urlParams.get('losses')==='1';}
+const urlParams=new URLSearchParams(location.search),requested=urlParams.get('experiment');const opensExperiment=ids.includes(requested);
+if(opensExperiment){current=requested;params=defaults(current);for(const [key,,,min,max,step] of definitions[current].params){if(urlParams.has(key)){const v=Number(urlParams.get(key));if(Number.isFinite(v))params[key]=Number(Math.min(max,Math.max(min,min+Math.round((v-min)/step)*step)).toFixed(6));}}losses=urlParams.get('losses')==='1';}
+$('energyHome').hidden=opensExperiment;$('laboratory').hidden=!opensExperiment;
+if(opensExperiment)$('skipEnergy').href='#laboratory';
 selectExperiment(current,params,losses);$('journalCount').textContent=journal.length;requestAnimationFrame(frame);
 
-initLanguage(()=>{tabs();renderControls();renderTasks();createEnergyLegend();createLiveData();syncPlay();render();if($('journalDialog').open)renderJournal();});
+initLanguage(()=>{tabs();$('energyTopics').innerHTML=energyTopics(getLanguage());renderControls();renderTasks();createEnergyLegend();createLiveData();syncPlay();render();if($('journalDialog').open)renderJournal();});
+if(location.hash.startsWith('#energy-'))document.getElementById(location.hash.slice(1))?.scrollIntoView();
