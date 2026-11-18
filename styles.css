@@ -52,3 +52,16 @@ footer{flex-wrap:wrap}.creator-credit{flex:0 0 100%;width:100%;border-top:1px so
 .takeaway>a,footer>a[data-home-section]{color:inherit;text-decoration:underline;text-underline-offset:.2em}
 #energyHome[hidden],#laboratory[hidden]{display:none}
 .energy-start{display:inline-flex;margin-top:.5rem;padding:.65rem 1rem;background:var(--green);color:#fff;border-radius:.65rem;text-decoration:none}
+.energy-preview-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:16px}
+.energy-preview{display:flex;flex-direction:column;overflow:hidden;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius)}
+.preview-window{background:linear-gradient(145deg,#f7f1fb,#eee5f6);padding:8px 13px 13px}
+.preview-window svg{width:100%;display:block}
+.preview-balance{height:8px;background:#e2d7e9;border-radius:8px;overflow:hidden;display:flex}
+.preview-balance span{height:100%}
+.preview-copy{display:flex;flex-direction:column;flex:1;padding:16px 18px}
+.preview-copy h3,.preview-copy p{margin:0 0 10px}
+.preview-copy p{line-height:1.48;color:#50405b}
+.preview-actions{display:flex;align-items:center;justify-content:space-between;gap:.6rem;margin-top:auto}
+.preview-actions a,.preview-actions button{font:inherit;font-size:.875rem;padding:.5rem .65rem;border-radius:8px}
+.preview-actions a{background:#6f08b0;color:#fff;text-decoration:none}
+.preview-actions button{background:#fff;border:1px solid #cabbd5;color:#493857}

@@ -1,5 +1,5 @@
 import {renderMathText,updateMathElement} from './assets/math.js?v=fullaudit2';
-import {fromEnglish} from './romance.js?v=theory-home1';
+import {fromEnglish} from './romance.js?v=energy-visuals1';
 // Presentation-only localization. Physics state and saved notebook data stay unchanged.
 const pairs = [
 ['Створено астрофізикинею','Created by astrophysicist'],['Оленою Компанієць','Olena Kompaniiets'],['за допомогою GPT-6 Astra.','with the help of GPT-6 Astra.'],['Контакти:','Contact:'],['Контакти','Contact'],
@@ -26,6 +26,11 @@ const pairs = [
 ];
 pairs.push(["У цій моделі η — частка енергії батареї, що переходить у видиме світло. Опір у механічних дослідах задається силою F = −mγv, тому γ має одиницю с⁻¹. Для зіткнення e — відношення відносної швидкості віддалення візків до відносної швидкості їхнього зближення перед ударом.", "In this model, η is the fraction of battery energy converted to visible light. Mechanical drag follows F = −mγv, so γ has units of s⁻¹. For collisions, e is the relative separation speed after impact divided by the relative approach speed before impact."]);
 pairs.push(['Теорія','Theory'],['Обери дослід','Choose an experiment'],['Перейти до змісту','Skip to content']);
+pairs.push(["Під час спуску потенціальна енергія переходить у кінетичну. Опір повітря поступово збільшує внутрішню енергію тягарця й довкілля.", "As the bob swings down, potential energy becomes kinetic energy. Air resistance gradually increases the internal energy of the bob and its surroundings."],
+ ["Візок розганяється вниз і сповільнюється вгору. За наявності опору частина механічної енергії переходить у внутрішню.", "The cart speeds up downhill and slows down uphill. With drag, some mechanical energy becomes internal energy."],
+ ["Стиснута або розтягнута пружина запасає енергію. Без опору вантаж рухається найшвидше в положенні рівноваги; опір перетворює механічну енергію у внутрішню.", "A compressed or stretched spring stores energy. Without drag, the mass moves fastest at equilibrium. Drag converts mechanical energy into internal energy."],
+ ["Імпульс двох візків зберігається. За непружного зіткнення частина кінетичної енергії переходить у внутрішню: нагрівання, коливання й деформацію.", "The two carts’ total momentum is conserved. In an inelastic collision, some kinetic energy becomes internal energy through heating, vibrations and deformation."],
+ ["Батарея живить лампу. Запас хімічної енергії зменшується, а передані довкіллю енергія світла й теплота накопичуються в балансі.", "The battery powers the lamp. Its store of chemical energy decreases. The balance tracks the light energy and heat transferred to the surroundings."]);
 const dictionary=new Map(pairs);
 for(const [source,target] of pairs){if(source.length>3)dictionary.set(source.toUpperCase(),target.toUpperCase())}
 const escapeRE=s=>s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
