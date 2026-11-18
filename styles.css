@@ -70,6 +70,7 @@ footer{flex-wrap:wrap}.creator-credit{flex:0 0 100%;width:100%;border-top:1px so
 .system-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin:1rem 0}
 .system-card{display:flex;flex-direction:column;min-width:0;padding:1.15rem;border:1px solid var(--line);border-radius:var(--radius);background:var(--paper)}
 .system-card h4{margin:0 0 .8rem;font-size:1.23rem}
+.system-intro>p,.system-card p{font-size:1rem;line-height:1.58}
 .system-card p{margin:.4rem 0}
 .system-card .system-example{margin-top:.85rem;color:var(--ink);font-weight:700}
 .system-card .system-law{margin-top:auto;padding-top:.85rem}
@@ -91,9 +92,9 @@ footer{flex-wrap:wrap}.creator-credit{flex:0 0 100%;width:100%;border-top:1px so
 .vapour{left:52%;top:9px}
 .vapour:before{left:-40px;top:12px;transform:rotate(-90deg)}
 .vapour:after{left:-13px;top:11px;transform:rotate(-45deg)}
-.heat{right:.5rem;bottom:20px}
-.heat:before{right:0;top:-10px}
-.heat:after{right:0;top:-13px;transform:rotate(45deg)}
+.heat{left:calc(50% + min(34%,105px) - 21px);bottom:16px;width:calc(50% - min(34%,105px) + 12px);line-height:1.2}
+.heat:before{left:0;top:-10px;width:43px}
+.heat:after{left:33px;top:-13px;transform:rotate(45deg)}
 @media(max-width:640px){.system-grid{grid-template-columns:1fr}}
 
 .energy-topic{max-width:none;margin:1.7rem 0;padding:1.15rem;border:1px solid var(--line);border-radius:var(--radius);background:#fff}
