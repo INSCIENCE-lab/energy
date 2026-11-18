@@ -9,7 +9,7 @@ const lang=new URLSearchParams(location.search).get('lang');
 const [loading,failure,retryLabel]=Object.hasOwn(messages,lang)?messages[lang]:messages.uk;
 status.textContent=loading;
 try {
- await import('./app.js?v=energy-visuals1');
+ await import('./app.js?v=editorial1');
  await import('./mobile-scene.js?v=mobile1');
  status.remove();
 } catch(error) {

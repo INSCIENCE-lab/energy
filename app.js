@@ -1,8 +1,8 @@
 import {energyScene} from './energy-scene.js';
 import {mountEnergyPreviews} from './energy-previews.js';
-import {energyTopics} from './energy-topics.js';
-import {Experiment,definitions,defaults,energyInfo,DT} from './physics.js?v=energy-visuals1';
-import {translate, getLanguage, getLocale, initLanguage} from './i18n.js?v=energy-visuals1';
+import {energyTopics} from './energy-topics.js?v=editorial1';
+import {Experiment,definitions,defaults,energyInfo,DT} from './physics.js?v=editorial1';
+import {translate, getLanguage, getLocale, initLanguage} from './i18n.js?v=editorial1';
 const $=id=>document.getElementById(id), ids=Object.keys(definitions);
 const parameterDigits=step=>step<0.1?2:step<1?1:0;
 const fmt=(n,d=2)=>new Intl.NumberFormat(getLocale(),{minimumFractionDigits:d,maximumFractionDigits:d}).format(n);
@@ -96,5 +96,5 @@ $('energyHome').hidden=opensExperiment;$('laboratory').hidden=!opensExperiment;
 if(opensExperiment)$('skipEnergy').href='#laboratory';
 selectExperiment(current,params,losses);$('journalCount').textContent=journal.length;requestAnimationFrame(frame);
 
-initLanguage(()=>{tabs();$('energyTopics').innerHTML=energyTopics(getLanguage());renderControls();renderTasks();createEnergyLegend();createLiveData();syncPlay();render();if($('journalDialog').open)renderJournal();});
+initLanguage(()=>{tabs();$('energyTopics').innerHTML=energyTopics(getLanguage(),id=>energyURL(id).href);renderControls();renderTasks();createEnergyLegend();createLiveData();syncPlay();render();if($('journalDialog').open)renderJournal();});
 if(location.hash.startsWith('#energy-'))document.getElementById(location.hash.slice(1))?.scrollIntoView();
